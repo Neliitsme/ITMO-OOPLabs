@@ -10,10 +10,10 @@ using Microsoft.VisualBasic;
 
 namespace IniParser
 {
-    class IniCollection
-    {
-        public Dictionary<string, Dictionary<string, string>> iniCollection = new Dictionary<string, Dictionary<string, string>>();
-    }
+    // class IniCollection
+    // {
+    //     public Dictionary<string, Dictionary<string, string>> iniCollection = new Dictionary<string, Dictionary<string, string>>();
+    // }
     
     
     
@@ -21,7 +21,8 @@ namespace IniParser
     {
         private string _filePath;
         private string _sectionPattern = @"\[(.*?)\]";
-        public IniCollection data = new IniCollection();
+        private Dictionary<string, Dictionary<string, string>> _iniCollection = new Dictionary<string, Dictionary<string, string>>();
+        // public IniCollection data = new IniCollection();
 
         private string _WhtiespaceRemover(string line)
         {
@@ -41,12 +42,12 @@ namespace IniParser
 
         private bool _CheckIfSectionOrParameterExists(string sectionName, string parameterName)
         {
-            if (!data.iniCollection.ContainsKey(sectionName))
+            if (!_iniCollection.ContainsKey(sectionName))
             {
                 return false;
             }
 
-            if (!data.iniCollection[sectionName].ContainsKey(parameterName))
+            if (!_iniCollection[sectionName].ContainsKey(parameterName))
             {
                 return false;
             }
@@ -60,14 +61,13 @@ namespace IniParser
             {
                 throw new ArgumentException("Incorrect Section or Parameter name");
             }
-            
-            try
+
+            var outcome = int.TryParse(_iniCollection[sectionName][parameterName], out var returnVal);
+            if (outcome)
             {
-                value = 
-                    // ReSharper disable once PossibleNullReferenceException
-                    (int) Convert.ChangeType(data.iniCollection[sectionName][parameterName], typeof(int));
+                value = returnVal;
             }
-            catch (FormatException)
+            else
             {
                 throw new FormatException("Cannot convert this string to int");
             }
@@ -80,22 +80,20 @@ namespace IniParser
                 throw new ArgumentException("Incorrect Section or Parameter name");
             }
             
-            try
+            var outcome = float.TryParse(_iniCollection[sectionName][parameterName], out var returnVal);
+            if (outcome)
             {
-                value =
-                    // ReSharper disable once PossibleNullReferenceException
-                    (float) Convert.ChangeType(data.iniCollection[sectionName][parameterName], typeof(float));
+                value = returnVal;
             }
-            catch (FormatException)
+            else
             {
                 throw new FormatException("Cannot convert this string to float");
             }
-             
         }
 
         public void TryGetString(string sectionName, string parameterName, out string value)
         {
-            value = data.iniCollection[sectionName][parameterName];
+            value = _iniCollection[sectionName][parameterName];
         }
         
         public int SetFilePath(string path, bool debug)
@@ -122,10 +120,10 @@ namespace IniParser
         }
         public void PrintIniCollection()
         {
-            foreach (var section in data.iniCollection)
+            foreach (var section in _iniCollection)
             {
                 Console.WriteLine($"[{section.Key}]");
-                foreach (var parval in data.iniCollection[section.Key])
+                foreach (var parval in _iniCollection[section.Key])
                 {
                     Console.WriteLine($"{parval.Key} = {parval.Value}");
                 }
@@ -151,7 +149,7 @@ namespace IniParser
                 {
                     string trimmedSectionName = s.Trim(new Char[] {'[', ']', ' '});
                     lastSection = trimmedSectionName;
-                    data.iniCollection.Add(lastSection, new Dictionary<string, string>());
+                    _iniCollection.Add(lastSection, new Dictionary<string, string>());
                     counter += 1;
                 }
                 else if (commentlessString.Contains("="))
@@ -160,13 +158,13 @@ namespace IniParser
                     if (spacelessString.Split("=").Length < 1)
                     {
                         string parameter = spacelessString;
-                        data.iniCollection[lastSection].Add(parameter, String.Empty);
+                        _iniCollection[lastSection].Add(parameter, String.Empty);
                     }
                     else
                     {
                         var parameter = spacelessString.Split("=")[0];
                         var value = spacelessString.Split("=")[1];
-                        data.iniCollection[lastSection].Add(parameter, value);
+                        _iniCollection[lastSection].Add(parameter, value);
                     }
 
                     counter += 1;
@@ -179,7 +177,7 @@ namespace IniParser
 
             }
             // Console.WriteLine($"\nRead total of {counter} lines.");
-            return data.iniCollection;
+            return _iniCollection;
         }
 
 
