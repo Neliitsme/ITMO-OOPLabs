@@ -8,7 +8,7 @@ namespace IniParser
         static void Main(string[] args)
         {
             IniParser parser = new IniParser();
-            parser.SetFilePath(@"...", true); // Todo: Make it user input
+            parser.SetFilePath(@"...", true);
             var collection = parser.IniParse();
             parser.PrintIniCollection();
             parser.TryGetString("NCMD", "Test", out var str);
