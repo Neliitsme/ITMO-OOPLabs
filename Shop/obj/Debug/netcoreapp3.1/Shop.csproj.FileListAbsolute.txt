@@ -1,0 +1,13 @@
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\bin\Debug\netcoreapp3.1\Shop.exe
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\bin\Debug\netcoreapp3.1\Shop.deps.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\bin\Debug\netcoreapp3.1\Shop.runtimeconfig.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\bin\Debug\netcoreapp3.1\Shop.runtimeconfig.dev.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\bin\Debug\netcoreapp3.1\Shop.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\bin\Debug\netcoreapp3.1\Shop.pdb
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\obj\Debug\netcoreapp3.1\Shop.csprojAssemblyReference.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\obj\Debug\netcoreapp3.1\Shop.AssemblyInfoInputs.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\obj\Debug\netcoreapp3.1\Shop.AssemblyInfo.cs
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\obj\Debug\netcoreapp3.1\Shop.csproj.CoreCompileInputs.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\obj\Debug\netcoreapp3.1\Shop.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\obj\Debug\netcoreapp3.1\Shop.pdb
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Shop\obj\Debug\netcoreapp3.1\Shop.genruntimeconfig.cache
