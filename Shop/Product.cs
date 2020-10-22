@@ -10,7 +10,7 @@ namespace Shop
     {
         public static bool CheckProduct(Product product)
         {
-            if (!string.IsNullOrEmpty(product.Name) && product.Price <= 0 && product.Quantity <= 0)
+            if (!string.IsNullOrEmpty(product.Name))
             {
                 return true;
             }
@@ -19,21 +19,13 @@ namespace Shop
         }
 
         public string Name { get; set; }
-        public int Quantity { get; set; }
-        public int Price { get; set; }
         public string Id { get; set; }
 
-        public Product()
-        {
-            Id = Guid.NewGuid().ToString(); 
-            Price = 1;
-            Quantity = 1;
-        }
-        public Product(string name, int quantity = 1, int price = 1)
+        public Product() => Id = Guid.NewGuid().ToString();
+
+        public Product(string name)
         {
             Name = name;
-            Quantity = quantity;
-            Price = price;
             Id = Guid.NewGuid().ToString();
         }
     }

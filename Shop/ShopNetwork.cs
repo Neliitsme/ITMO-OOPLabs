@@ -10,29 +10,6 @@ namespace Shop
     {
         private Dictionary<string , Shop> _shopNetwork = new Dictionary<string, Shop>();
 
-        public void CreateShop(string shopName, string shopAddress)
-        {
-            Shop shop = new Shop();
-            shop.Id = Guid.NewGuid().ToString();
-            shop.Name = shopName;
-            shop.Address = shopAddress;
-            Shop.CheckShop(shop);
-            _shopNetwork.Add(shop.Id, shop);
-        }
-
-        public Shop GetShop(string shopName, string shopAddress)
-        {
-            foreach (var shop in _shopNetwork)
-            {
-                if (shop.Value.Name == shopName && shop.Value.Address == shopAddress)
-                {
-                    return shop.Value;
-                }
-            }
-
-            throw new ArgumentException("No shop with such name and address exists");
-        }
-
         public Shop GetShop(string shopId)
         {
             if (_shopNetwork.ContainsKey(shopId))
@@ -47,6 +24,10 @@ namespace Shop
         public void AddShop(Shop shop)
         {
             Shop.CheckShop(shop);
+            if (_shopNetwork.ContainsKey(shop.Id) || _shopNetwork.ContainsValue(shop))
+            {
+                throw new ArgumentException("Can't add same shop to the network more than once");
+            }
             _shopNetwork.Add(shop.Id, shop);
         }
 
@@ -68,7 +49,7 @@ namespace Shop
             throw new ArgumentException("No shop with such ID exists in the network");
         }
 
-        public void FindWhereCheapest(string productName)//Todo: Check and prolly re-make
+        public void FindWhereCheapest(string productId)
         {
             Shop cheapestShop = null;
             int lowestPrice = 0;
@@ -76,16 +57,14 @@ namespace Shop
             foreach (var shop in _shopNetwork)
             {
                 Shop.CheckShop(shop.Value);
-                foreach (var product in shop.Value.ProductInfoDictionary)
+                if (shop.Value.ProductCollection.ContainsKey(productId))
                 {
-                    Product.CheckProduct(product.Value);
-                    if (product.Value.Name == productName)
+                    Product.CheckProduct(shop.Value.ProductCollection[productId].ProductInfo);
+
+                    if (lowestPrice == 0 || shop.Value.ProductCollection[productId].Price < lowestPrice)
                     {
-                        if (lowestPrice == 0 || product.Value.Price < lowestPrice)
-                        {
-                            lowestPrice = product.Value.Price;
-                            cheapestShop = shop.Value;
-                        }
+                        lowestPrice = shop.Value.ProductCollection[productId].Price;
+                        cheapestShop = shop.Value;
                     }
                 }
             }
@@ -96,10 +75,10 @@ namespace Shop
                 return;
             }
 
-            Console.WriteLine($"Lowest price of \"{productName}\": {lowestPrice}; In: {cheapestShop.Name}");
+            Console.WriteLine($"Lowest price of \"{cheapestShop.ProductCollection[productId].ProductInfo.Name}\": {lowestPrice}; In: {cheapestShop.Name}");
         }
 
-        public void FindWhereCheapestBatch(string productName, int quantity)//Todo: Check and prolly re-make
+        public void FindWhereCheapestBatch(string productId, int quantity)
         {
             Shop cheapestShop = null;
             int lowestPriceForBatch = 0;
@@ -107,14 +86,14 @@ namespace Shop
             foreach (var shop in _shopNetwork)
             {
                 Shop.CheckShop(shop.Value);
-                foreach (var product in shop.Value.ProductInfoDictionary)
+                if (shop.Value.ProductCollection.ContainsKey(productId))
                 {
-                    Product.CheckProduct(product.Value);
-                    if (product.Value.Name == productName && product.Value.Quantity >= quantity)
+                    Product.CheckProduct(shop.Value.ProductCollection[productId].ProductInfo);
+                    if (shop.Value.ProductCollection[productId].Quantity >= quantity)
                     {
-                        if (lowestPriceForBatch == 0 || product.Value.Price < lowestPriceForBatch)
+                        if (lowestPriceForBatch == 0 || shop.Value.ProductCollection[productId].Price * quantity < lowestPriceForBatch)
                         {
-                            lowestPriceForBatch = product.Value.Price * quantity;
+                            lowestPriceForBatch = shop.Value.ProductCollection[productId].Price * quantity;
                             cheapestShop = shop.Value;
                         }
                     }
@@ -127,7 +106,7 @@ namespace Shop
                 return;
             }
 
-            Console.WriteLine($"Lowest price for batch of \"{productName}\": {lowestPriceForBatch}; In: {cheapestShop.Name}");
+            Console.WriteLine($"Lowest price for {quantity} of \"{cheapestShop.ProductCollection[productId].ProductInfo.Name}\": {lowestPriceForBatch}; In: {cheapestShop.Name}");
         }
 
         public void PrintAllShops()
@@ -151,6 +130,19 @@ namespace Shop
             }
 
             throw new ArgumentException("No shop with such name and address exists");
+        }
+
+        public Shop this[string shopId]
+        {
+            get
+            {
+                if (_shopNetwork.ContainsKey(shopId))
+                {
+                    return _shopNetwork[shopId];
+                }
+
+                throw new ArgumentException("No shop with such ID is present in the network");
+            }
         }
 
     }

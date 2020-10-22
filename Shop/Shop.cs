@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
@@ -9,6 +10,13 @@ namespace Shop
 {
     public class Shop
     {
+        public class StoredProduct
+        {
+            public Product ProductInfo { get; set; }
+            public int Price { get; set; }
+            public int Quantity { get; set; }
+        }
+
         public static bool CheckShop(Shop shop)
         {
             if (!string.IsNullOrEmpty(shop.Name) && !string.IsNullOrEmpty(shop.Address))
@@ -17,11 +25,11 @@ namespace Shop
             }
             throw new ArgumentException("Shop is missing some field assignment or contains values that are not allowed");
         }
-
         public string Name { get; set; }
         public string Id { get; set; }
         public string Address { get; set; }
-        public Dictionary<string, Product> ProductInfoDictionary = new Dictionary<string, Product>();
+
+        public readonly Dictionary<string, StoredProduct> ProductCollection = new Dictionary<string, StoredProduct>();
 
         public Shop() => Id = Guid.NewGuid().ToString();
 
@@ -32,43 +40,24 @@ namespace Shop
             Id = Guid.NewGuid().ToString();
         }
 
-        public void CreateProduct(string productName, int productQuantity, int productPrice)
-        {
-            Product product = new Product();
-            product.Name = productName;
-            product.Quantity = productQuantity;
-            product.Price = productPrice;
-            Product.CheckProduct(product);
-            ProductInfoDictionary.Add(product.Id, product);
-        }
-
         public string GetProductId(string productName)
         {
-            foreach (var product in ProductInfoDictionary)
+            foreach (var product in ProductCollection)
             {
-                if (product.Value.Name == productName)
+                if (product.Value.ProductInfo.Name == productName)
                 {
-                    return product.Value.Id;
+                    return product.Value.ProductInfo.Id;
                 }
             }
 
-            throw new ArgumentException("No product with such name exists");
+            throw new ArgumentException("No product with such name exists in this shop");
         }
 
-
-        public Product GetProduct(string productNameOrId)
+        public Product GetProduct(string productId)
         {
-            if (ProductInfoDictionary.ContainsKey(productNameOrId))
+            if (ProductCollection.ContainsKey(productId))
             {
-                return ProductInfoDictionary[productNameOrId];
-            }
-
-            foreach (var product in ProductInfoDictionary)
-            {
-                if (product.Value.Name == productNameOrId)
-                {
-                    return product.Value;
-                }
+                return ProductCollection[productId].ProductInfo;
             }
 
             throw new ArgumentException("No product with such name exists");
@@ -76,86 +65,100 @@ namespace Shop
 
         public void RemoveProduct(string productId)
         {
-            if (ProductInfoDictionary.ContainsKey(productId))
+            if (ProductCollection.ContainsKey(productId))
             {
-                ProductInfoDictionary.Remove(productId);
+                ProductCollection.Remove(productId);
+                return;
             }
             throw new ArgumentException("No product with such ID exists in this shop");
         }
 
         public void RemoveProduct(Product product)
         {
-            if (ProductInfoDictionary.ContainsValue(product))
+            if (ProductCollection.ContainsKey(product.Id))
             {
-                ProductInfoDictionary.Remove(product.Id);
+                ProductCollection.Remove(product.Id);
+                return;
             }
             throw new ArgumentException("No such product exists in this shop");
         }
 
-        public void AddProductBatch(Product product)//Todo: Check and prolly re-make
+        public void AddProduct(Product product, int quantity = 1, int price = 1)
         {
-            Product.CheckProduct(product);
-
-            if (ProductInfoDictionary.ContainsKey(product.Id) && product.Name == ProductInfoDictionary[product.Id].Name)
+            if (quantity <= 0 || price <= 0)
             {
-                ProductInfoDictionary[product.Id].Quantity += product.Quantity;
-                ProductInfoDictionary[product.Id].Price = product.Price;
+                throw new ArgumentException("Quantity and/or price below zero is now allowed");
+            }
+
+            Product.CheckProduct(product);
+            if (ProductCollection.ContainsKey(product.Id))
+            {
+                ProductCollection[product.Id].Quantity += quantity;
+                ProductCollection[product.Id].Price = price;
                 return;
             }
 
-            Product tempProd = new Product(product.Name, product.Quantity, product.Price);
-            tempProd.Id = product.Id;
-            
-            ProductInfoDictionary.Add(tempProd.Id, tempProd);
+            ProductCollection.Add(product.Id, new StoredProduct(){ProductInfo = product, Price = price, Quantity = quantity});
         }
 
-        public void ChangeProductPrice(string productId, int newPrice)//Todo: Check and prolly re-make
+        public void ChangeProductPrice(string productId, int newPrice)
         {
-            ProductInfoDictionary[productId].Price = newPrice;
+            if (ProductCollection.ContainsKey(productId))
+            {
+                ProductCollection[productId].Price = newPrice;
+                return;
+            }
+
+            throw new ArgumentException("No product with such ID exists in this shop");
         }
 
         public void PrintShopContents()
         {
             Console.WriteLine("List of all products in " + Name);
-            foreach (var product in ProductInfoDictionary)
+            foreach (var product in ProductCollection)
             {
-                Product.CheckProduct(product.Value);
-                Console.WriteLine($"\tName: {product.Value.Name}; \tPrice: {product.Value.Price}; \tQuantity: {product.Value.Quantity}; \tId: {product.Value.Id}");
+                Product.CheckProduct(product.Value.ProductInfo);
+                Console.WriteLine($"\tName: {product.Value.ProductInfo.Name}; \tPrice: {product.Value.Price}; \tQuantity: {product.Value.Quantity}; \tId: {product.Value.ProductInfo.Id}");
             }
         }
 
         public void WhatCanIBuy(int budget)
         {
             Console.WriteLine("You can buy:");
-            foreach (var product in ProductInfoDictionary)
+            foreach (var product in ProductCollection)
             {
-                Product.CheckProduct(product.Value);
+                Product.CheckProduct(product.Value.ProductInfo);
                 int totalAmount = budget / product.Value.Price;
                 if (totalAmount > product.Value.Quantity)
                 {
                     totalAmount = product.Value.Quantity;
                 }
 
-                Console.WriteLine($"\t{product.Value.Name}: Quantity - {totalAmount}, for {totalAmount * product.Value.Price}");
+                Console.WriteLine($"\t{product.Value.ProductInfo.Name}: Quantity - {totalAmount}, for {totalAmount * product.Value.Price}");
             }
         }
 
-        public int BuyProductBatch(string productName, int quantity)//Todo: Check and prolly re-make
+        public int BuyProductBatch(string productId, int quantity = 1)
         {
-            foreach (var product in ProductInfoDictionary)
+            if (ProductCollection.ContainsKey(productId))
             {
-                Product.CheckProduct(product.Value);
-                if (product.Value.Name == productName)
+                Product.CheckProduct(ProductCollection[productId].ProductInfo);
+                if (ProductCollection[productId].Quantity < quantity)
                 {
-                    if (product.Value.Quantity < quantity)
-                    {
-                        throw new ArgumentException("Shop doesn't have the required amount of product you're trying to buy");
-                    }
-
-                    product.Value.Quantity -= quantity;
-                    Console.WriteLine("Total was: " + product.Value.Price * quantity);
-                    return product.Value.Price * quantity;
+                    throw new ArgumentException("Shop doesn't have the required amount of product you're trying to buy");
                 }
+                ProductCollection[productId].Quantity -= quantity;
+
+                int totalPrice = ProductCollection[productId].Price * quantity;
+
+                Console.WriteLine($"Total for {quantity} of \"{ProductCollection[productId].ProductInfo.Name}\" is: {totalPrice}");
+
+                if (ProductCollection[productId].Quantity == 0)
+                {
+                    ProductCollection.Remove(productId);
+                }
+
+                return totalPrice;
             }
 
             throw new ArgumentException("There's no product with such name");
