@@ -1,0 +1,13 @@
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\obj\Debug\netcoreapp3.1\Backups.csprojAssemblyReference.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\obj\Debug\netcoreapp3.1\Backups.AssemblyInfoInputs.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\obj\Debug\netcoreapp3.1\Backups.AssemblyInfo.cs
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\obj\Debug\netcoreapp3.1\Backups.csproj.CoreCompileInputs.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\bin\Debug\netcoreapp3.1\Backups.exe
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\bin\Debug\netcoreapp3.1\Backups.deps.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\bin\Debug\netcoreapp3.1\Backups.runtimeconfig.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\bin\Debug\netcoreapp3.1\Backups.runtimeconfig.dev.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\bin\Debug\netcoreapp3.1\Backups.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\bin\Debug\netcoreapp3.1\Backups.pdb
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\obj\Debug\netcoreapp3.1\Backups.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\obj\Debug\netcoreapp3.1\Backups.pdb
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Backups\obj\Debug\netcoreapp3.1\Backups.genruntimeconfig.cache
