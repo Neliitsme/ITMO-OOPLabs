@@ -14,9 +14,11 @@ namespace IniParser
             parser.TryGet<string>("NCMD", "Test", out var str);
             Console.WriteLine($"\n{str}");
             parser.TryGet<double>("ADC_DEV", "BufferLenSecons", out var flt);
-            Console.WriteLine($"{flt}");
+            Console.WriteLine(flt);
             parser.TryGet<double>("FUN", "HelloFrediKats", out var dbl);
-            Console.WriteLine($"{dbl}");
+            Console.WriteLine(dbl);
+            parser.TryGet<string>("NO_SECTION_ENTRY", "definitelyNoSectionHere", out var nosect);
+            Console.WriteLine(nosect);
 
         }
     }

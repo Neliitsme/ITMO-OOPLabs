@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Zzlj0u9XfT4o+uv1xiwvX+7xpOLSzQ6D+xEJ8yh1qZkSSjDXtFFqqnv0ITWH66SvPndfNo//uwxfOBWXAqRtGg==",
+  "success": true,
+  "projectFilePath": "/home/nelite/OneDrive/Repos/OOPLabs/IniParser/IniParser.csproj",
+  "expectedPackageFiles": [
+    "/home/nelite/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
+  ],
+  "logs": []
+}

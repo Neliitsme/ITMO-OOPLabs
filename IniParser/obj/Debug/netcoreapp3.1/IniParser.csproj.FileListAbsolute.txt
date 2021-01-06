@@ -30,7 +30,6 @@ C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\bin\Debug\netcoreapp3.1\IniParse
 C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\bin\Debug\netcoreapp3.1\IniParser.runtimeconfig.dev.json
 C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\bin\Debug\netcoreapp3.1\IniParser.dll
 C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\bin\Debug\netcoreapp3.1\IniParser.pdb
-C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\obj\Debug\netcoreapp3.1\IniParser.csprojAssemblyReference.cache
 C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\obj\Debug\netcoreapp3.1\IniParser.AssemblyInfoInputs.cache
 C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\obj\Debug\netcoreapp3.1\IniParser.AssemblyInfo.cs
 C:\Users\nelii\OneDrive\Repos\OOPLabs\IniParser\obj\Debug\netcoreapp3.1\IniParser.csproj.CoreCompileInputs.cache

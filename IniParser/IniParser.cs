@@ -68,7 +68,7 @@ namespace IniParser
             }
 
             _filePath = path;
-            switch (debug) //Todo: should prolly remove that later
+            switch (debug)
             {
                 case true:
                     Console.WriteLine("File path's set");
