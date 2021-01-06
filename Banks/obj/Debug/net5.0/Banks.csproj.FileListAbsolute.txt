@@ -1,0 +1,16 @@
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\bin\Debug\net5.0\Banks.exe
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\bin\Debug\net5.0\Banks.deps.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\bin\Debug\net5.0\Banks.runtimeconfig.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\bin\Debug\net5.0\Banks.runtimeconfig.dev.json
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\bin\Debug\net5.0\Banks.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\bin\Debug\net5.0\ref\Banks.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\bin\Debug\net5.0\Banks.pdb
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.csprojAssemblyReference.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.AssemblyInfoInputs.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.AssemblyInfo.cs
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.csproj.CoreCompileInputs.cache
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\ref\Banks.dll
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.pdb
+C:\Users\nelii\OneDrive\Repos\OOPLabs\Banks\obj\Debug\net5.0\Banks.genruntimeconfig.cache
