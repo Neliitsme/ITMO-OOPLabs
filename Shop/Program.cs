@@ -8,6 +8,7 @@ namespace Shop
         {
             var network = new ShopNetwork();
             Shop ashan = new Shop {Name = "ashan", Address = "bruh street"};
+
             network.AddShop(ashan);
             network.AddShop(new Shop("name", "nice street"));
             network.AddShop(new Shop("Ikea", "street name, street number"));

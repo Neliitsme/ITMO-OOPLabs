@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "WTjiYWl22Gi81wh2L3O0UIWvZIDHjM8NbxfLkvCC1urEG+KNnH2gXLSQp7GsrIkkVd7jRc2H8sv7hNzBfT1GWQ==",
+  "success": true,
+  "projectFilePath": "/home/nelite/OneDrive/Repos/OOPLabs/Shop/Shop.csproj",
+  "expectedPackageFiles": [
+    "/home/nelite/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
+  ],
+  "logs": []
+}
