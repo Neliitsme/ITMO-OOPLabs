@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IniParser", "IniParser\IniParser.csproj", "{EC7733A5-34C2-4079-8A6C-45D5BE96ADD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IniParser", "IniParser\IniParser.csproj", "{EC7733A5-34C2-4079-8A6C-45D5BE96ADD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop", "Shop\Shop.csproj", "{85FF5685-7BAE-40C8-9D33-BE354EA68803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyAccurateRacingSim", "TotallyAccurateRacingSim\TotallyAccurateRacingSim.csproj", "{69E0889F-5DBD-44F9-A12C-F7A4B2E087B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backups", "Backups\Backups.csproj", "{172C5E2D-02A6-4689-A704-5A3E0E00A4E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banks", "Banks\Banks.csproj", "{C068F47B-CF6F-47B4-B1C2-392A35247529}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{EC7733A5-34C2-4079-8A6C-45D5BE96ADD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC7733A5-34C2-4079-8A6C-45D5BE96ADD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC7733A5-34C2-4079-8A6C-45D5BE96ADD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85FF5685-7BAE-40C8-9D33-BE354EA68803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85FF5685-7BAE-40C8-9D33-BE354EA68803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85FF5685-7BAE-40C8-9D33-BE354EA68803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85FF5685-7BAE-40C8-9D33-BE354EA68803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E0889F-5DBD-44F9-A12C-F7A4B2E087B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E0889F-5DBD-44F9-A12C-F7A4B2E087B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E0889F-5DBD-44F9-A12C-F7A4B2E087B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E0889F-5DBD-44F9-A12C-F7A4B2E087B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172C5E2D-02A6-4689-A704-5A3E0E00A4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172C5E2D-02A6-4689-A704-5A3E0E00A4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172C5E2D-02A6-4689-A704-5A3E0E00A4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172C5E2D-02A6-4689-A704-5A3E0E00A4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C068F47B-CF6F-47B4-B1C2-392A35247529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C068F47B-CF6F-47B4-B1C2-392A35247529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C068F47B-CF6F-47B4-B1C2-392A35247529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C068F47B-CF6F-47B4-B1C2-392A35247529}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
